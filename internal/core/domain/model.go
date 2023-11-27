@@ -31,12 +31,9 @@ func (b *Base) SetUpdatedAt(updatedAt time.Time) {
 	b.UpdatedAt = updatedAt
 }
 
-type GameState string
-
 type Game struct {
 	*Base
 	Players []Player
-	State   GameState
 }
 
 type Player struct {

@@ -3,7 +3,8 @@ package port
 import "github.com/pleum/hexgo/internal/core/domain"
 
 type Repo[T domain.Model] interface {
-	Create(entity T) (int, error)
+	Create(entity T) (T, error)
+	CreateMany(entities []T) ([]T, error)
 	Update(entity T) error
 	FindByID(id int) (*T, error)
 	FindAll() ([]*T, error)
