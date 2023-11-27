@@ -1,14 +1,24 @@
 package main
 
 import (
-	"log/slog"
+	"log"
+	"os"
+	"os/signal"
+	"syscall"
 
-	"github.com/pleum/hexgo/cmd/api/wire"
+	"github.com/pleum/hexgo/cmd/api/internal/wire"
 )
 
 func main() {
-	_, err := wire.InitializeEvent()
+	_, cleanup, err := wire.InitializeContainer()
 	if err != nil {
-		slog.Error(err.Error())
+		log.Panic(err)
 	}
+	defer cleanup()
+
+	c := make(chan os.Signal, 1)
+	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
+
+	_ = <-c
+	log.Println("Gracefully shutting down...")
 }

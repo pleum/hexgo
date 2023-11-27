@@ -7,31 +7,31 @@ import (
 
 type GameRepository struct{}
 
-// Create implements port.PlayerRepo.
-func (*GameRepository) Create(entity domain.Player) (int, error) {
+// Create implements port.GameRepo.
+func (*GameRepository) Create(entity domain.Game) (int, error) {
 	panic("unimplemented")
 }
 
-// DeleteByID implements port.PlayerRepo.
+// DeleteByID implements port.GameRepo.
 func (*GameRepository) DeleteByID(id int) error {
 	panic("unimplemented")
 }
 
-// FindAll implements port.PlayerRepo.
-func (*GameRepository) FindAll() ([]*domain.Player, error) {
+// FindAll implements port.GameRepo.
+func (*GameRepository) FindAll() ([]*domain.Game, error) {
 	panic("unimplemented")
 }
 
-// FindByID implements port.PlayerRepo.
-func (*GameRepository) FindByID(id int) (*domain.Player, error) {
+// FindByID implements port.GameRepo.
+func (*GameRepository) FindByID(id int) (*domain.Game, error) {
 	panic("unimplemented")
 }
 
-// Update implements port.PlayerRepo.
-func (*GameRepository) Update(entity domain.Player) error {
+// Update implements port.GameRepo.
+func (*GameRepository) Update(entity domain.Game) error {
 	panic("unimplemented")
 }
 
-func NewMongoGameRepository() port.PlayerRepo {
+func NewMongoGameRepository() port.GameRepo {
 	return &GameRepository{}
 }
